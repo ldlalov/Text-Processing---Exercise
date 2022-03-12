@@ -7,25 +7,25 @@ namespace _07._String_Explosion
         static void Main(string[] args)
         {
             string input = Console.ReadLine();
-            int start = 0;
-            int count = 0;
+            int end = 0;
             for (int i = 0; i < input.Length; i++)
             {
                 if (input[i].ToString() == ">")
                 {
-                    start = i + 1;
-                    count = int.Parse(char.ToString(input[start]));
-
-                    for (int j = start; j <= count; j++)
+                    if (char.IsDigit(input[i+1]))
                     {
-                        if (input[j].ToString() == ">")
-                        {
-                            count += int.Parse(char.ToString(input[j+1]));
-                        }
+                        end += int.Parse(char.ToString(input[i+1]));
                     }
-                    input = input.Remove(start, count);
                 }
-                
+                if (end > 0)
+                {
+                    if (input[i].ToString() != ">")
+                    {
+                input = input.Remove(i, 1);
+                        end--;
+                        i--;
+                    }
+                }
             }
             Console.WriteLine(input);
         }

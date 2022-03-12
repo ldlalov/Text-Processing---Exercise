@@ -37,7 +37,7 @@ namespace _08._Letters_Change_Numbers
                 }
                 total += result;
             }
-            Console.WriteLine($"{total:f2}");
+            Console.WriteLine($"{total:f2}"); 
         }
     }
 }
